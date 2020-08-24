@@ -55,8 +55,8 @@ module.exports = {
     dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
     storage: storageTypes[process.env.STORAGE_TYPE],
     limits: {
-        // 4 MB 
-        fileSize: 4 * 1024 * 1024
+        // 10 MB 
+        fileSize: 10 * 1024 * 1024
     },
     // fileFilter é para fazer verificação de formatos dos arquivos
     fileFilter: (req, file, callback) => {

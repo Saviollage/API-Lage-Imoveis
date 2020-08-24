@@ -18,8 +18,7 @@ const PropertySchema = new mongoose.Schema({
     },
     // TIPO IMÓVEL ~ Casa, Apto, Sítio, Lote, etc etc
     type: {
-        type: String,
-        required: true
+        type: String
     },
     // DISPONÍVEL PARA VENDA
     forSale: {

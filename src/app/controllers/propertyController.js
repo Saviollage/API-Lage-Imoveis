@@ -27,7 +27,7 @@ router.get("/all", authMiddleware, async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         //Retorna todos os imóveis para nossa variavel properties e ainda adiciona a essa requisição a tabela user
-        const properties = await Property.find({ active: 1 }).sort({ views: -1 });
+        const properties = await Property.find({ ...req.query, active: 1 }).sort({ views: -1 });
 
         //retorna a lista de imóveis
         return res.send(properties);
@@ -114,8 +114,6 @@ router.delete("/:propertyId", authMiddleware, async (req, res) => {
             'property': req.params.propertyId
         })
 
-        console.log(images)
-
         await await Promise.all(images.map(async img => {
             await img.remove();
         }));
@@ -125,7 +123,6 @@ router.delete("/:propertyId", authMiddleware, async (req, res) => {
             property
         });
     } catch (err) {
-        console.log(err)
         return res.status(400).send({ error: "Error deleting property" });
     }
 });

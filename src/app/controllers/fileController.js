@@ -31,7 +31,7 @@ router.post('/new', authMiddleware, multer(multerConfig).single('file'), async (
         return res.json(image);
     }
     catch (err) {
-
+        console.log(err)
         return res.status(400).json(err);
     }
 
