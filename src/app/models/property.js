@@ -13,8 +13,7 @@ const PropertySchema = new mongoose.Schema({
     },
     // PREÇO
     price: {
-        type: Number,
-        required: true
+        type: Number
     },
     // TIPO IMÓVEL ~ Casa, Apto, Sítio, Lote, etc etc
     type: {
