@@ -59,7 +59,11 @@ router.get("/:propertyId", async (req, res) => {
 router.post("/", authMiddleware, async (req, res) => {
     try {
         //Cria um propriedade com o conteudo do body passado pelo usuario
-        const property = await Property.create(req.body);
+
+        const data = req.body
+        if (!data.price)
+            data.price = 600
+        const property = await Property.create(data);
 
         //Salva o imóvel
         await property.save();
