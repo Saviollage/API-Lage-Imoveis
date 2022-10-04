@@ -21,8 +21,6 @@ app.use(
     express.static(path.resolve(__dirname, "..", "tmp", "uploads"))
 );
 
-
-
 //repassa o app ao controller (de forma a mante-lo unico no sistema), para importar os modulos presentes na pasta controller
 require("./app/controllers/routes")(app);
 
