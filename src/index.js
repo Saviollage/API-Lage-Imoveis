@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
-//Criando a aplicação
 
 const path = require("path");
 const cors = require("cors");
