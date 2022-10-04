@@ -21,6 +21,5 @@ Disponível [neste link](https://lageimoveis.com.br)
   <img src="https://lageimoveis.s3.amazonaws.com/4.jpeg" width="200">
   <img src="https://lageimoveis.s3.amazonaws.com/5.jpeg" width="200">
 </p>
-
 ## Licença
 [MIT](https://choosealicense.com/licenses/mit/)
