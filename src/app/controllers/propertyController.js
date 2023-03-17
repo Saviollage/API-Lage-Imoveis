@@ -3,6 +3,7 @@ const authMiddleware = require("../middlewares/auth");
 
 const Property = require("../models/property");
 const Image = require("../models/image");
+const generateSearchFields = require("../service/searchFields");
 
 const router = express.Router();
 //router.use(authMiddleware); 
@@ -15,6 +16,44 @@ router.get("/all", authMiddleware, async (req, res) => {
 
         //retorna a lista de imóveis
         return res.send(properties);
+    } catch (err) {
+        return res.status(400).send({ error: "Error listing properties " });
+    }
+});
+
+router.get("/home", async (req, res) => {
+    try {
+        //Retorna todos os imóveis para nossa variavel properties e ainda adiciona a essa requisição a tabela user
+        const properties = await Property.find().sort({ views: -1 });
+        const homeObj = {
+            search: generateSearchFields(properties),
+            highlights: [],
+            houses: [],
+            apartaments: [],
+            area: [],
+            rooms: []
+        };
+
+        properties.reduce((acc, property) => {
+            if (property.highlight) {
+                acc.highlights.push(property);
+            }
+            else if (property.type === 'Casa') {
+                acc.houses.push(property);
+            }
+            else if (property.type === 'Apartamento') {
+                acc.apartaments.push(property);
+            }
+            else if (property.type === 'Área' || property.type === 'Terreno' || property.type === 'Lote') {
+                acc.area.push(property);
+            }
+            else if (property.type === 'Sala' || property.type === 'Loja') {
+                acc.rooms.push(property);
+            }
+            return acc;
+        }, homeObj);
+        //retorna a lista de imóveis
+        return res.send(homeObj);
     } catch (err) {
         return res.status(400).send({ error: "Error listing properties " });
     }

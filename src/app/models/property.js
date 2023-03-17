@@ -72,6 +72,13 @@ const PropertySchema = new mongoose.Schema({
     views: {
         type: Number,
         default: 0
+    },
+    highlight: {
+        type: Boolean,
+        default: false
+    },
+    fullAddress: {
+        type: Object
     }
 
 });
