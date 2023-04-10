@@ -10,7 +10,7 @@
   "author": "Saviollage",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.685.0",
+    "aws-sdk": "^2.1354.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
