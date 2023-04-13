@@ -6,14 +6,16 @@ function generateSearchFields(properties) {
             types.push(item.type);
         }
 
-        const { city, neighborhood } = item.fullAddress;
-        if (!cities[city]) {
-            cities[city] = new Set();
+        const { city = '', neighborhood = '' } = item.fullAddress || {};
+        if (city && neighborhood) {
+            if (!cities[city]) {
+                cities[city] = new Set();
+            }
+            cities[city].add(neighborhood);
         }
-        cities[city].add(neighborhood);
-        
+
     });
-    
+
     Object.keys(cities).forEach((city) => {
         cities[city] = Array.from(cities[city])
     })

@@ -55,7 +55,8 @@ router.get("/home", async (req, res) => {
         //retorna a lista de imóveis
         return res.send(homeObj);
     } catch (err) {
-        return res.status(400).send({ error: "Error listing properties " });
+        console.log(err)
+        return res.status(400).send({ error: "Error listing properties ", details: err.message });
     }
 });
 
